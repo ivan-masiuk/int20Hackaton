@@ -1,3 +1,5 @@
+from enum import Enum
+
 from django.contrib.auth.models import AbstractUser
 from django.db import models
 from django.conf import settings
@@ -8,9 +10,22 @@ from rest_framework.authtoken.models import Token
 from .managers import CustomUserManager
 
 
+class RoleCategory(Enum):
+    TECHNICAL = 'Technical'
+    OTHER = 'Other'
+
+
+class Role(models.Model):
+    name = models.CharField(max_length=50)
+    category = models.CharField(max_length=20, choices=[(tag.name, tag.value) for tag in RoleCategory])
+
+    def __str__(self):
+        return self.name
+
+
 class User(AbstractUser):
     username = None
-    role = models.CharField(blank=False, max_length=50)
+    role = models.ForeignKey(Role, related_name='users', on_delete=models.PROTECT, null=True)
     email = models.EmailField("email address", unique=True)
 
     USERNAME_FIELD = "email"

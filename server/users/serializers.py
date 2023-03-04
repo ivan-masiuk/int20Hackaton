@@ -1,5 +1,10 @@
 from rest_framework import serializers
-from .models import User
+from .models import User, Role
+
+class RoleSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Role
+        fields = ('id', 'name', 'category')
 
 
 class UserSerializer(serializers.ModelSerializer):
@@ -7,7 +12,7 @@ class UserSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = User
-        fields = ("id", "email", "first_name", "role", "password")
+        fields = ("id", "email", "first_name","role", "password" )
 
     def create(self, validated_data):
         user = User.objects.create(
@@ -19,3 +24,11 @@ class UserSerializer(serializers.ModelSerializer):
         user.save()
         return user
 
+
+
+class UserShowSerializer(serializers.ModelSerializer):
+    role = RoleSerializer()
+
+    class Meta:
+        model = User
+        fields = ("id", "email", "first_name", "role")
