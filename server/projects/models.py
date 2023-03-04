@@ -20,6 +20,4 @@ class Project(models.Model):
 class SearchItem(models.Model):
     role = models.ForeignKey(Role, on_delete=models.CASCADE)
     project = models.ForeignKey(Project, related_name='search_for', on_delete=models.CASCADE)
-    amount = models.IntegerField()
-
 

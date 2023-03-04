@@ -11,8 +11,9 @@ from .managers import CustomUserManager
 
 
 class RoleCategory(Enum):
-    TECHNICAL = 'Technical'
-    OTHER = 'Other'
+    TECHNICAL = 'Технічна'
+    NOT_TECHnICAL = 'Не технічна'
+    OTHER = 'Інша'
 
 
 class Role(models.Model):
