@@ -1,19 +1,18 @@
 version: "3"
 
 services:
-  holodos_server:
+  server:
     build:
       context: .
       dockerfile: server.Dockerfile
     container_name: app_server
     ports:
-      - "8001:4000"
+      - "8001:8001"
 
-  holodos_client:
+  client:
     build:
       context: .
       dockerfile: client.Dockerfile
     container_name: app_client
     ports:
       - "80:3000"
-
