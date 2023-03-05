@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Project, SearchItem
+from .models import Project, SearchItem, JoinRequest
 
 
 class SearchItemInline(admin.TabularInline):
@@ -13,3 +13,4 @@ class ProjectAdmin(admin.ModelAdmin):
 
 admin.site.register(Project, ProjectAdmin)
 admin.site.register(SearchItem)
+admin.site.register(JoinRequest)
