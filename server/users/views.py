@@ -6,8 +6,8 @@ from django.contrib.auth import authenticate, login
 from rest_framework.authtoken.models import Token
 from rest_framework.response import Response
 from rest_framework import status
-from .models import User
-from .serializers import UserSerializer, UserShowSerializer
+from .models import User, Role
+from .serializers import UserSerializer, UserShowSerializer, RoleSerializer
 
 
 class UserCreateAPIView(generics.CreateAPIView):
@@ -54,3 +54,13 @@ class UserDetailView(generics.RetrieveAPIView):
 
     serializer_class = UserShowSerializer
     queryset = User.objects.all()
+
+
+class RoleListView(generics.ListAPIView):
+    authentication_classes = []
+    permission_classes = []
+
+    queryset = Role.objects.all()
+    serializer_class = RoleSerializer
+
+
