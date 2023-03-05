@@ -54,6 +54,9 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
+CORS_ALLOW_ALL_ORIGINS = True
+CORS_ALLOW_CREDENTIALS = True
+
 ROOT_URLCONF = 'server.urls'
 
 TEMPLATES = [
@@ -138,11 +141,11 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 AUTH_USER_MODEL = 'users.User'
 
-# CORS_ORIGIN_ALLOW_ALL = True
-CORS_ALLOWED_ORIGINS = [
-    'http://localhost:3000',
-    'https://127.0.0.1:3000',
-    'https://localhost:80',
-    'https://127.0.0.1:80',
-    'https://127.0.0.1:5173',
-]
+
+# CORS_ALLOWED_ORIGINS = [
+#     'http://localhost:3000',
+#     'https://127.0.0.1:3000',
+#     'https://localhost:80',
+#     'https://127.0.0.1:80',
+#     'https://127.0.0.1:5173',
+# ]
