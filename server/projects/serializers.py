@@ -25,6 +25,12 @@ class SearchItemSerializer(serializers.ModelSerializer):
         fields = ['role']
 
 
+class SearchItemCreateSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = SearchItem
+        fields = ['role']
+
+
 class ProjectSerializer(serializers.ModelSerializer):
     owner = UserShowSerializer()
     users = UserShowSerializer(many=True)
@@ -36,7 +42,7 @@ class ProjectSerializer(serializers.ModelSerializer):
 
 
 class ProjectCreateSerializer(serializers.ModelSerializer):
-    search_for = SearchItemSerializer(many=True)
+    search_for = SearchItemCreateSerializer(many=True)
     class Meta:
         model = Project
         fields = ('title', 'overview', 'search_for',)
